@@ -1,0 +1,57 @@
+{
+  "requiredOneOf": [
+    "id",
+    "status",
+    "type",
+    "name"
+  ],
+  "attributes": {
+    "id": {
+      "description": "Entry ID",
+      "ui-priority": 0,
+      "misp-attribute": "text",
+      "disable_correlation": true
+    },
+    "status": {
+      "description": "Describes if the entry is used.",
+      "ui-priority": 0,
+      "misp-attribute": "text",
+      "sane_default": [
+        "used",
+        "unused",
+        "orphan"
+      ],
+      "disable_correlation": true
+    },
+    "type": {
+      "description": "Type of the entry.",
+      "ui-priority": 0,
+      "misp-attribute": "text",
+      "sane_default": [
+        "Empty",
+        "Storage",
+        "Stream",
+        "Lockbytes",
+        "Property",
+        "Root"
+      ],
+      "disable_correlation": true
+    },
+    "name": {
+      "description": "Name of the entry.",
+      "ui-priority": 0,
+      "misp-attribute": "text"
+    },
+    "size": {
+      "description": "Size of the entry.",
+      "ui-priority": 0,
+      "misp-attribute": "size-in-bytes",
+      "disable_correlation": true
+    }
+  },
+  "version": "0.1",
+  "description": "Object describing an Object Linking and Embedding (OLE) entry.",
+  "meta-category": "file",
+  "uuid": "3f40b799-cd30-49ce-bb2a-2f6b7f04d34b",
+  "name": "ole-entry"
+}

@@ -1,0 +1,32 @@
+{
+  "requiredOneOf": [
+    "creating-app"
+  ],
+  "attributes": {
+    "creation-timestamp": {
+      "description": "Creation timestamp of the ole.",
+      "ui-priority": 1,
+      "misp-attribute": "datetime"
+    },
+    "last-saved-timestamp": {
+      "description": "Last saved timestamp of the ole.",
+      "ui-priority": 1,
+      "misp-attribute": "datetime"
+    },
+    "codepage": {
+      "description": "Codepage of the ole.",
+      "ui-priority": 0,
+      "misp-attribute": "text"
+    },
+    "creation-appliation": {
+      "description": "Name of the application used to create the ole.",
+      "ui-priority": 0,
+      "misp-attribute": "text"
+    }
+  },
+  "version": "0.1",
+  "description": "Object describing an Object Linking and Embedding (OLE).",
+  "meta-category": "file",
+  "uuid": "c8f4d023-7475-4233-a04c-d8512320e32a",
+  "name": "ole"
+}
