@@ -312,6 +312,11 @@
       "multiple": true,
       "ui-priority": 0
     },
+    "imphash": {
+      "description": "Hash (md5) calculated from the PE import table",
+      "misp-attribute": "imphash",
+      "ui-priority": 0
+    },
     "malware-sample": {
       "description": "The file itself (binary)",
       "misp-attribute": "malware-sample",
@@ -437,10 +442,16 @@
         "Trusted"
       ]
     },
+    "telfhash": {
+      "description": "telfhash - Symbol hash for ELF files.",
+      "misp-attribute": "telfhash",
+      "ui-priority": 0
+    },
     "text": {
       "description": "Free text value to attach to the file",
       "disable_correlation": true,
       "misp-attribute": "text",
+      "multiple": true,
       "recommended": false,
       "ui-priority": 1
     },
@@ -476,6 +487,8 @@
     "sha3-384",
     "sha3-512",
     "tlsh",
+    "telfhash",
+    "imphash",
     "pattern-in-file",
     "certificate",
     "malware-sample",
@@ -484,5 +497,5 @@
     "fullpath"
   ],
   "uuid": "688c46fb-5edb-40a3-8273-1af7923e2215",
-  "version": 22
+  "version": 24
 }
