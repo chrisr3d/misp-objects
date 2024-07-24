@@ -13,11 +13,44 @@
       "name": "derived-from"
     },
     {
-      "description": "This relationship describes an object which executes another object",
+      "description": "This relationship describes an object which executes another object.",
       "format": [
         "misp"
       ],
-      "name": "executes"
+      "name": "executes",
+      "opposite": "executed-by"
+    },
+    {
+      "description": "This relationship describes an object which shares another object.",
+      "format": [
+        "misp"
+      ],
+      "name": "shares",
+      "opposite": "shared-by"
+    },
+    {
+      "description": "This relationship describes an object which was shared by another object.",
+      "format": [
+        "misp"
+      ],
+      "name": "shared-by",
+      "opposite": "shares"
+    },
+    {
+      "description": "This relationship describes an object which publishes another object.",
+      "format": [
+        "misp"
+      ],
+      "name": "publishes",
+      "opposite": "published-by"
+    },
+    {
+      "description": "This relationship describes an object which was published by another object.",
+      "format": [
+        "misp"
+      ],
+      "name": "published-by",
+      "opposite": "publishes"
     },
     {
       "description": "The referenced source and target objects are semantically duplicates of each other.",
@@ -200,7 +233,8 @@
         "misp",
         "stix-2.0"
       ],
-      "name": "targets"
+      "name": "targets",
+      "opposite": "targeted-by"
     },
     {
       "description": "This relationship describes the use by the source object of the target object.",
@@ -218,7 +252,17 @@
         "misp",
         "stix-2.0"
       ],
-      "name": "indicates"
+      "name": "indicates",
+      "opposite": "indicated-by"
+    },
+    {
+      "description": "This relationship describes that the source object is indicated by the target object.",
+      "format": [
+        "misp",
+        "stix-2.1"
+      ],
+      "name": "indicated-by",
+      "opposite": "indicates"
     },
     {
       "description": "This relationship describes that the source object mentions the target object.",
@@ -331,15 +375,25 @@
       "format": [
         "misp"
       ],
-      "name": "executed-by"
+      "name": "executed-by",
+      "opposite": "executes"
     },
     {
-      "description": "This relationship describes an object affected by another object.",
+      "description": "This relationship describes an object that affects another object.",
       "format": [
         "misp",
         "alfred"
       ],
-      "name": "affects"
+      "name": "affects",
+      "opposite": "affected-by"
+    },
+    {
+      "description": "This relationship describes an object affected by another object.",
+      "format": [
+        "misp"
+      ],
+      "name": "affected-by",
+      "opposite": "affects"
     },
     {
       "description": "This relationship describes an object beaconing to another object.",
@@ -400,14 +454,14 @@
         "misp"
       ],
       "name": "followed-by",
-      "opposite": "preceding-by"
+      "opposite": "preceded-by"
     },
     {
       "description": "This relationship describes an object which is preceded by another object. This can be used when a time reference is missing but a sequence is known.",
       "format": [
         "misp"
       ],
-      "name": "preceding-by",
+      "name": "preceded-by",
       "opposite": "followed-by"
     },
     {
@@ -828,9 +882,19 @@
     {
       "description": "Represents the semantic link of a communication initiating an event.",
       "format": [
-        "alfred"
+        "alfred",
+        "misp"
       ],
-      "name": "initiates"
+      "name": "initiates",
+      "opposite": "initiated-by"
+    },
+    {
+      "description": "The source object initiated the target object.",
+      "format": [
+        "misp"
+      ],
+      "name": "initiated-by",
+      "opposite": "initiates"
     },
     {
       "description": "Represents the semantic link between a FILE and FILE_BINARY.",
@@ -1058,7 +1122,8 @@
         "misp",
         "haxpak"
       ],
-      "name": "creates"
+      "name": "creates",
+      "opposite": "created-by"
     },
     {
       "description": "Represents an object being the screenshot of something.",
@@ -1268,6 +1333,13 @@
       "name": "drives"
     },
     {
+      "description": "The referenced source object is a rewrite specified in the target object. The rewrite can be for a computer program text but also any rewrite of a text.",
+      "format": [
+        "misp"
+      ],
+      "name": "rewrite"
+    },
+    {
       "description": "The referenced source object is a friend of the target object.",
       "format": [
         "foaf"
@@ -1303,11 +1375,11 @@
       "name": "spouse-of"
     },
     {
-      "description": "The referenced source object is an ennemy of the target object.",
+      "description": "The referenced source object is an enemy of the target object.",
       "format": [
         "foaf"
       ],
-      "name": "ennemy-of"
+      "name": "enemy-of"
     },
     {
       "description": "The referenced source object is an antagonist of the target object.",
@@ -1373,6 +1445,13 @@
         "misp"
       ],
       "name": "is-not-targeted-by"
+    },
+    {
+      "description": "This relationship describes that the source object provides services described in the target object.",
+      "format": [
+        "misp"
+      ],
+      "name": "serves"
     },
     {
       "description": "The source object considers the target object as a friend. Is not necessarily symmetric.",
@@ -1499,7 +1578,329 @@
         "XFN"
       ],
       "name": "Me"
+    },
+    {
+      "description": "The source object is redirected to the target object.",
+      "format": [
+        "misp"
+      ],
+      "name": "redirects-to"
+    },
+    {
+      "description": "The source object is rendered to the target object.",
+      "format": [
+        "misp"
+      ],
+      "name": "rendered-as"
+    },
+    {
+      "description": "The source object is known as the target object.",
+      "format": [
+        "misp"
+      ],
+      "name": "known-as"
+    },
+    {
+      "description": "The source object is led to the target object.",
+      "format": [
+        "stix-2.1"
+      ],
+      "name": "led-to"
+    },
+    {
+      "description": "The source object has an impact on the target.",
+      "format": [
+        "stix-2.1"
+      ],
+      "name": "impacts",
+      "opposite": "impacted-by"
+    },
+    {
+      "description": "The source object is impacted by the target.",
+      "format": [
+        "misp"
+      ],
+      "name": "impacted-by",
+      "opposite": "impacts"
+    },
+    {
+      "description": "An object occured at a specific location.",
+      "format": [
+        "stix-2.1"
+      ],
+      "name": "located-at"
+    },
+    {
+      "description": "The source object should be considered a point of contact for the target.",
+      "format": [
+        "stix-2.1"
+      ],
+      "name": "contact-for"
+    },
+    {
+      "description": "The source object was responsible for detecting the target object.",
+      "format": [
+        "stix-2.1"
+      ],
+      "name": "detects",
+      "opposite": "detected-by"
+    },
+    {
+      "description": "The source object is detected by the target object.",
+      "format": [
+        "misp"
+      ],
+      "name": "detected-by",
+      "opposite": "detects"
+    },
+    {
+      "description": "The target object was observed as part of a source event.",
+      "format": [
+        "stix-2.1"
+      ],
+      "name": "observed",
+      "opposite": "observed-by"
+    },
+    {
+      "description": "The source object was observed by the target object.",
+      "format": [
+        "misp"
+      ],
+      "name": "observed-by",
+      "opposite": "observed"
+    },
+    {
+      "description": "The source object is based on the target.",
+      "format": [
+        "stix-2.1"
+      ],
+      "name": "based-on"
+    },
+    {
+      "description": "The source object performed the target event.",
+      "format": [
+        "stix-2.1"
+      ],
+      "name": "performed",
+      "opposite": "performed-by"
+    },
+    {
+      "description": "The source object was performed by the target.",
+      "format": [
+        "misp"
+      ],
+      "name": "performed-by",
+      "opposite": "performed"
+    },
+    {
+      "description": "The source object blocks the target object.",
+      "format": [
+        "stix-2.1"
+      ],
+      "name": "blocks",
+      "opposite": "blocked-by"
+    },
+    {
+      "description": "The source object is blocked by the target object.",
+      "format": [
+        "misp"
+      ],
+      "name": "blocked-by",
+      "opposite": "blocks"
+    },
+    {
+      "description": "The source object causes the target event.",
+      "format": [
+        "stix-2.1"
+      ],
+      "name": "causes",
+      "opposite": "caused-by"
+    },
+    {
+      "description": "The source object is caused by the target object.",
+      "format": [
+        "misp"
+      ],
+      "name": "caused-by",
+      "opposite": "causes"
+    },
+    {
+      "description": "The source object is followed by the target because of an error.",
+      "format": [
+        "stix-2.1"
+      ],
+      "name": "errored-to"
+    },
+    {
+      "description": "The source object has been assigned the target.",
+      "format": [
+        "stix-2.1"
+      ],
+      "name": "assigned"
+    },
+    {
+      "description": "The source object participated in the target task.",
+      "format": [
+        "stix-2.1"
+      ],
+      "name": "participated-in"
+    },
+    {
+      "description": "The source object is targeted by the target object.",
+      "format": [
+        "misp"
+      ],
+      "name": "targeted-by",
+      "opposite": "targets"
+    },
+    {
+      "description": "The source object was created by the target object.",
+      "format": [
+        "misp"
+      ],
+      "name": "created-by",
+      "opposite": "creates"
+    },
+    {
+      "description": "The source object is the sample of the target object.",
+      "format": [
+        "stix-2.1"
+      ],
+      "name": "sample-of"
+    },
+    {
+      "description": "This relationship describes an object which is allied with another object.",
+      "format": [
+        "misp"
+      ],
+      "name": "is-allied-with "
+    },
+    {
+      "description": "The source object acquires the target object.",
+      "format": [
+        "misp"
+      ],
+      "name": "acquires",
+      "opposite": "is-acquired-by"
+    },
+    {
+      "description": "The source object is acquired by the target object.",
+      "format": [
+        "misp"
+      ],
+      "name": "is-acquired-by",
+      "opposite": "acquires"
+    },
+    {
+      "description": "The source object supports the target object.",
+      "format": [
+        "misp"
+      ],
+      "name": "supports",
+      "opposite": "supported-by"
+    },
+    {
+      "description": "The source object is supported by the target object.",
+      "format": [
+        "misp"
+      ],
+      "name": "supported-by",
+      "opposite": "supports"
+    },
+    {
+      "description": "The source object sponsors the target object.",
+      "format": [
+        "misp"
+      ],
+      "name": "sponsors",
+      "opposite": "sponsored-by"
+    },
+    {
+      "description": "The source object is sponsored by the target object.",
+      "format": [
+        "misp"
+      ],
+      "name": "sponsored-by",
+      "opposite": "sponsors"
+    },
+    {
+      "description": "The source object operates from the target object.",
+      "format": [
+        "misp"
+      ],
+      "name": "operates-from"
+    },
+    {
+      "description": "The source object deploys the target object.",
+      "format": [
+        "misp"
+      ],
+      "name": "deploys",
+      "opposite": "is-deployed-by"
+    },
+    {
+      "description": "The source object is deployed by the target object.",
+      "format": [
+        "misp"
+      ],
+      "name": "is-deployed-by",
+      "opposite": "deploys"
+    },
+    {
+      "description": "The source object interacts with the target object.",
+      "format": [
+        "misp"
+      ],
+      "name": "interacts-with"
+    },
+    {
+      "description": "The source object injects the target object.",
+      "format": [
+        "misp"
+      ],
+      "name": "injects",
+      "opposite": "is-injected-by"
+    },
+    {
+      "description": "The source object is injected by the target object.",
+      "format": [
+        "misp"
+      ],
+      "name": "is-injected-by",
+      "opposite": "injects"
+    },
+    {
+      "description": "The source object interviews the target object.",
+      "format": [
+        "misp"
+      ],
+      "name": "interviews",
+      "opposite": "is-interviewed-by"
+    },
+    {
+      "description": "The source object is interviewed by the target object.",
+      "format": [
+        "misp"
+      ],
+      "name": "is-interviewed-by",
+      "opposite": "interviews"
+    },
+    {
+      "description": "The source object summarizes the target object.",
+      "format": [
+        "misp"
+      ],
+      "name": "summarizes",
+      "opposite": "summarized-by"
+    },
+    {
+      "description": "The source object is summarized by the target object.",
+      "format": [
+        "misp"
+      ],
+      "name": "summarized-by",
+      "opposite": "summarizes"
     }
   ],
-  "version": 35
+  "version": 49
 }
